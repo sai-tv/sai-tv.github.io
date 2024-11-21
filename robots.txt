@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://sai-tv.github.io/al-folio/sitemap.xml
+Sitemap: https://sai-tv.github.io/sitemap.xml
