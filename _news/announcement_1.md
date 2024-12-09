@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-<a href="[https://www.pinterest.com](https://onorilab.stanford.edu/news/sai-thatipamula-awarded-chevron-fellowship-energy)">Chevron Energy Fellowship 2024-25!</a>
+<a href="https://onorilab.stanford.edu/news/sai-thatipamula-awarded-chevron-fellowship-energy">Chevron Energy Fellowship 2024-25!</a>
