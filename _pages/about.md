@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Ph.D. Student in Energy Science and Engineering
+subtitle: Ph.D. Candidate in Energy Science and Engineering
 
 profile:
   align: right
@@ -14,7 +14,7 @@ profile:
     <p>Stanford, CA-94305</p>
 
 news: true # includes a list of news items
-selected_papers: true # includes a list of papers marked as "selected={true}"
+selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
