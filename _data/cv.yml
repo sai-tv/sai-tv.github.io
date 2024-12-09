@@ -9,7 +9,7 @@
 - title: Education
   type: time_table
   contents:
-    - title: Ph.D. Candidate
+    - title: Ph.D. Candidate in Energy Science and Engineering
       institution: Stanford University, Stanford - CA
       year: 2022 - Current
       description:
@@ -19,13 +19,13 @@
           contents:
             - Sub-description 1.
             - Sub-description 2.
-    - title: M.S.CEP
+    - title: M.S. Chemical Engineering Practice
       institution: Massachusetts Institute of Technology (M.I.T.), Cambridge - MA
       year: 2020 - 2022
       description:
         - Description 1.
         - Description 2.
-    - title: B.Sc.Eng.
+    - title: B.Sc.Eng. in Chemical Engineering
       institution: American University of Sharjah, Sharjah - U.A.E.
       year: 2015 - 2018
       description:
