@@ -1,16 +1,14 @@
 {
   "basics": {
-    "name": "Albert Einstein",
-    "label": "Scientist",
+    "name": "Venkata (Sai)charan Thatipamula",
+    "label": "Ph.D. Candidate in Energy Science and Engineering",
     "image": "",
-    "email": "albert@einstein.de",
-    "phone": "(912) 123-4567",
-    "url": "https://alshedivat.github.io/al-folio/",
-    "summary": "A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time",
+    "email": "saitv@stanford.edu",
+    "summary": "Chemical engineer interested in all aspects of the energy transition.",
     "location": {
-      "address": "2712 Broadway St",
-      "postalCode": "CA 94115",
-      "city": "San Francisco",
+      "address": "367 Panama Mall",
+      "postalCode": "CA 94305",
+      "city": "Stanford",
       "countryCode": "US",
       "region": "California"
     },
@@ -24,9 +22,8 @@
   },
   "work": [
     {
-      "name": "Institute for Advanced Study, Princeton University",
-      "position": "Professor of Theoretical Physics",
-      "url": "https://example.com",
+      "name": "Stanford University",
+      "position": "Student Researcher",
       "startDate": "1933-01-01",
       "endDate": "1955-01-01",
       "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
@@ -47,24 +44,42 @@
   ],
   "education": [
     {
-      "institution": "University of Zurich, Zurich, Switzerland",
-      "location": "Zurich, Switzerland",
-      "url": "https://www.uzh.ch/",
-      "area": "Software Development",
-      "studyType": "PhD",
-      "startDate": "1905-01-01",
-      "endDate": "1905-01-01",
-      "score": "10",
-      "courses": ["Theory of Relativity"]
+      "institution": "Stanford University",
+      "location": "Stanford - CA, United States",
+      "url": "https://www.stanford.edu",
+      "area": "Energy Science and Engineering",
+      "studyType": "Ph.D.",
+      "startDate": "2022",
+      "endDate": "Present",
+      "courses": ["Physics-Based Modeling, Optimal Design, Electro-chemical Systems, Parameter Estimation"]
+    },
+    {
+    "institution": "Massachusetts Institute of Technology",
+      "location": "Cambridge - MA, United States",
+      "url": "https://www.mit.edu",
+      "area": "Chemical Engineering Practice",
+      "studyType": "M.S.",
+      "startDate": "2020",
+      "endDate": "2022",
+      "courses": ["Electrochemical Energy Systems, Nanotechnology, Transport Phenomena"]
+    },
+    {
+      "institution": "American University of Sharjah",
+        "location": "Sharjah, U.A.E.",
+        "url": "https://www.aus.edu",
+        "area": "Chemical Engineering",
+        "studyType": "B.Sc.Eng.",
+        "startDate": "2015",
+        "endDate": "2018"
     }
   ],
   "awards": [
     {
-      "title": "Nobel Prize in Physics",
-      "date": "1921-11-01",
-      "awarder": "Royal Swedish Academy of Sciences",
-      "url": "https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/",
-      "summary": "The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'"
+      "title": "Chevron Energy Fellowship 2024-25",
+      "date": "2024",
+      "awarder": "StorageX Initiative",
+      "url": "https://onorilab.stanford.edu/news/sai-thatipamula-awarded-chevron-fellowship-energy",
+      "summary": "The Chevron Fellowship supports PhD graduate research students focused on energy research. The Chevron Fellowship is part of the company’s University Partnership Program, which supports universities around the country by providing the necessary funding to better develop the future of the energy business. Fellowship awardees will be able to access Chevron stakeholders for industry perspective on their research topics. "
     }
   ],
   "certificates": [
