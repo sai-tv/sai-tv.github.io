@@ -16,10 +16,40 @@
   "work": [
     {
       "name": "Stanford University",
-      "position": "Student Researcher",
+      "position": "Student Researcher/Ph.D. Candidate",
       "startDate": "2022",
       "endDate": "Present",
-      "summary": "Modeling and Parameter Estimation for Technologies in the Energy Transition "
+      "summary": ["Modeling and Parameter Estimation for Technologies in the Energy Transition",
+                  "Optimal design and state estimation for LFP cells in microgrid applications (Chevron Energy Fellowship)",
+                  "Parameterizing high C-rate and temperature models for Li-ion batteries (Toyota Research Institute)",
+                  "Studying Electrochemical Impedance Spectroscopy (EIS)-based machine learning models as tools to estimate degradation and State of Health in Li-ion cells (Stanford SystemX and Nuvoton)",
+                  "Developed a 1-D pseudo-steady state control-oriented model with appropriate parameterization for catalyzed Gasoline Particulate Filters (GPFs) - a necessity for the mitigation of particulate matter emissions (NSF)",
+                  "Mentoring high school students as part of the Young Investigators Program"]
+    },
+    {
+      "name": "AstraZeneca",
+      "position": "MIT Practice School Consultant",
+      "startDate": "2022-02",
+      "endDate": "2022-05",
+      "summary": ["Developed a computer vision tool to predict characteristic properties during a stem cell propagation",
+                  "Studied agitation-induced protein aggregation and correlated results with simulated liquid surface parameters"]
+    },
+    {
+      "name": "Saint-Gobain",
+      "position": "MIT Practice School Consultant",
+      "startDate": "2021-08",
+      "endDate": "2021-11",
+      "summary": ["Established computational thermal simulation for an abrasive grinding process, and validated with ±8% accuracy",
+                  "Used design of experiments to find the root cause of a defect in a roofing product and recommended process solutions"]
+    },
+    {
+      "name": "Bilfinger Tebodin Middle East",
+      "position": "Process Engineer",
+      "startDate": "2018-12",
+      "endDate": "2020-05",
+      "summary": ["Performed hydraulic and engineering simulations for clients in the Middle East’s energy sector",
+                  "Conducted largely independent design, techno-economic and energy optimization analyses for new & existing plants",
+                  "Liaised with clients and vendors, led 3-4 person teams in simulation-based projects including planning and budgeting"]
     }
   ],
   "education": [
@@ -54,7 +84,7 @@
         "courses": ["Summa cum Laude"]
     }
   ],
-  "awards and fellowships": [
+  "awards": [
     {
       "title": "Chevron Energy Fellowship 2024-25",
       "date": "2024",
