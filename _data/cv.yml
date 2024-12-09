@@ -2,18 +2,16 @@
   type: map
   contents:
     - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
+      value: Venkata (Sai)charan Thatipamula
     - name: Languages
-      value: English, German
+      value: English, Telugu, Hindi, French, Italian (Duolingo!)
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
+    - title: Ph.D. Candidate
+      institution: Stanford University, Stanford - CA
+      year: 2022 - Current
       description:
         - Description 1.
         - Description 2.
@@ -21,12 +19,18 @@
           contents:
             - Sub-description 1.
             - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
+    - title: M.S.CEP
+      institution: Massachusetts Institute of Technology (M.I.T.), Cambridge - MA
+      year: 2020 - 2022
       description:
         - Description 1.
         - Description 2.
+    - title: B.Sc.Eng.
+      institution: American University of Sharjah, Sharjah - U.A.E.
+      year: 2015 - 2018
+      description:
+        - Description 1
+        - Description 2
 
 - title: Experience
   type: time_table
@@ -71,10 +75,9 @@
 - title: Honors and Awards
   type: time_table
   contents:
-    - year: 1921
+    - year: 2024
       items:
-        - Nobel Prize in Physics
-        - Matteucci Medal
+        - Chevron Energy Fellowship 2024-25
     - year: 2029
       items:
         - Max Planck Medal
@@ -82,7 +85,7 @@
 - title: Academic Interests
   type: nested_list
   contents:
-    - title: Topic 1.
+    - title: Physics-based Modeling and Parameter Estimation
       items:
         - Description 1.
         - Description 2.
@@ -94,4 +97,4 @@
 - title: Other Interests
   type: list
   contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+    - <u>Hobbies:</u> Golf and squash! etc.
