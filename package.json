@@ -1,6 +1,8 @@
 {
   "devDependencies": {
     "@shopify/prettier-plugin-liquid": "1.4.0",
-    "prettier": "3.1.1"
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
+    "prettier": "3.1.1",
+    "svelte": "^5.19.4"
   }
 }
