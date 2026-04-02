@@ -26,6 +26,14 @@
                   "Developed a 1-D pseudo-steady state control-oriented model with appropriate parameterization for catalyzed Gasoline Particulate Filters (GPFs) - a necessity for the mitigation of particulate matter emissions (NSF)",
                   "Mentoring high school students as part of the Young Investigators Program"]
     },
+        {
+      "name": "Tesla",
+      "position": "Intern - Cell Physics Modeling",
+      "startDate": "2025-06",
+      "endDate": "2025-09",
+      "highlights": ["Studied and developed solid diffusion coefficient estimation pipeline for novel active materials using electrode-level data and simulations for Tesla's physics-based models in conjunction with the experimental team",
+                  "Designed parameter estimation routine, data ingestion pipeline, and visualization tools to support cell physics modeling tasks"]
+    },
     {
       "name": "AstraZeneca",
       "position": "MIT Practice School Consultant",

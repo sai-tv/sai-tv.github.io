@@ -1,14 +1,10 @@
 <div class="repo p-2 text-center">
-  <a href="https://github.com/{{ include.username }}">
+  <a href="https://github.com/{{ include.username }}" target="_blank" rel="noopener noreferrer" class="d-block">
     <img
-      class="repo-img-light w-100"
+      class="w-100"
       alt="{{ include.username }}"
-      src="https://github-readme-stats.vercel.app/api/?username={{ include.username }}&theme={{ site.repo_theme_light }}&show_icons=true"
+      src="https://github.com/{{ include.username }}.png?size=320"
     >
-    <img
-      class="repo-img-dark w-100"
-      alt="{{ include.username }}"
-      src="https://github-readme-stats.vercel.app/api/?username={{ include.username }}&theme={{ site.repo_theme_dark }}&show_icons=true"
-    >
+    <p class="mt-2 mb-0">@{{ include.username }}</p>
   </a>
 </div>

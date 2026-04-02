@@ -14,7 +14,13 @@ nav_order: 2
 {% include bib_search.liquid %}
 
 <div class="publications">
+	<h2>Publications</h2>
+	{% bibliography --query @*[keywords=publication] %}
 
-{% bibliography %}
+	<h2>Talks</h2>
+	{% bibliography --query @*[keywords=talk] %}
+
+	<h2>Poster Presentations</h2>
+	{% bibliography --query @*[keywords=poster] %}
 
 </div>
