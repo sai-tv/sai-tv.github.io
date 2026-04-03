@@ -4,6 +4,7 @@ github_users:
 repo_description_lines_max: 2
 
 github_repos:
+  - sai-tv/latexdiff_for_vscode
   - sai-tv/sai-tv.github.io
   - sai-tv/academic-figures
   - sai-tv/interpretability

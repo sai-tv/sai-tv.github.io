@@ -1,0 +1,299 @@
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet">
+<section class="journey-story" aria-label="Journey scrollytelling map">
+  <div class="journey-story__layout">
+    <aside class="journey-story__map-wrap">
+      <div id="journey-map" class="journey-story__map" aria-label="Interactive journey map"></div>
+      <article id="journey-overlay" class="journey-story__overlay" aria-live="polite">
+        <div id="journey-overlay-media" class="journey-story__overlay-media journey-story__overlay-media--hidden" aria-hidden="true">
+          <img id="journey-overlay-image" alt="" loading="lazy">
+        </div>
+        <p id="journey-overlay-period" class="journey-story__period">2022 - Present</p>
+        <h3 id="journey-overlay-title">Stanford, CA</h3>
+        <p id="journey-overlay-description">Ph.D. chapter and current home base.</p>
+      </article>
+      <div id="journey-token-warning" class="journey-story__warning unloaded">
+        Add your Mapbox token in <code>_config.yml</code> as <code>mapbox_access_token</code> to display this map.
+      </div>
+    </aside>
+
+    <div class="journey-story__triggers" id="journey-chapters" aria-hidden="true">
+      <article id="chapter-stanford" class="journey-story__trigger is-active" data-period="2022 - Present" data-title="Stanford, CA" data-description="Ph.D. chapter and current home base." data-image="/assets/img/stanford.jpg" data-image-alt=""></article>
+      <article id="chapter-cambridge" class="journey-story__trigger" data-period="2020 - 2022" data-title="Cambridge, MA" data-description="M.S. in Chemical Engineering Practice at MIT." data-image="/assets/img/mit.jpg" data-image-alt=""></article>
+      <article id="chapter-abu-dhabi" class="journey-story__trigger" data-period="2018 - 2020" data-title="Abu Dhabi, UAE" data-description="Professional and academic chapter in Abu Dhabi." data-image="/assets/img/abudhabi.jpg" data-image-alt=""></article>
+      <article id="chapter-sharjah" class="journey-story__trigger" data-period="2015 - 2018" data-title="Sharjah, UAE" data-description="B.Sc.Eng. years at the American University of Sharjah." data-image="/assets/img/sharjah.jpg" data-image-alt=""></article>
+      <article id="chapter-berne" class="journey-story__trigger" data-period="2011 - 2014" data-title="Berne, Switzerland" data-description="Early international chapter in Switzerland." data-image="" data-image-alt=""></article>
+      <article id="chapter-new-delhi" class="journey-story__trigger" data-period="2008 - 2011" data-title="New Delhi, India" data-description="Formative years in New Delhi." data-image="" data-image-alt=""></article>
+      <article id="chapter-thimphu" class="journey-story__trigger" data-period="2005 - 2008" data-title="Thimphu, Bhutan" data-description="School years in Thimphu." data-image="" data-image-alt=""></article>
+      <article id="chapter-london" class="journey-story__trigger" data-period="2001 - 2005" data-title="London, England" data-description="Early childhood chapter in London." data-image="" data-image-alt=""></article>
+      <article id="chapter-bangalore" class="journey-story__trigger" data-period="1998 - 2000" data-title="Bangalore, India" data-description="Earliest chapter in Bangalore." data-image="" data-image-alt=""></article>
+    </div>
+  </div>
+</section>
+
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const mapElement = document.getElementById('journey-map');
+    const warningElement = document.getElementById('journey-token-warning');
+    const overlayPeriod = document.getElementById('journey-overlay-period');
+    const overlayTitle = document.getElementById('journey-overlay-title');
+    const overlayDescription = document.getElementById('journey-overlay-description');
+    const overlayMedia = document.getElementById('journey-overlay-media');
+    const overlayImage = document.getElementById('journey-overlay-image');
+    const overlayCard = document.getElementById('journey-overlay');
+
+    if (!mapElement || mapElement.dataset.initialized === 'true' || typeof mapboxgl === 'undefined') {
+      return;
+    }
+
+    mapElement.dataset.initialized = 'true';
+
+    const config = {
+      accessToken: '{{ site.mapbox_access_token | default: "" }}',
+      styles: {
+        day: 'mapbox://styles/mapbox/outdoors-v12',
+        night: 'mapbox://styles/mapbox/navigation-night-v1',
+      },
+      chapters: [
+        { id: 'chapter-stanford', location: { center: [-122.1697, 37.4275], zoom: 10.8, pitch: 40, bearing: 20 } },
+        { id: 'chapter-cambridge', location: { center: [-71.0942, 42.3601], zoom: 10.4, pitch: 35, bearing: -20 } },
+        { id: 'chapter-abu-dhabi', location: { center: [54.3773, 24.4539], zoom: 10.1, pitch: 28, bearing: 8 } },
+        { id: 'chapter-sharjah', location: { center: [55.4209, 25.3463], zoom: 9.8, pitch: 25, bearing: 0 } },
+        { id: 'chapter-berne', location: { center: [7.4474, 46.9480], zoom: 10.2, pitch: 35, bearing: -12 } },
+        { id: 'chapter-new-delhi', location: { center: [77.2090, 28.6139], zoom: 10.3, pitch: 30, bearing: 15 } },
+        { id: 'chapter-thimphu', location: { center: [89.6390, 27.4728], zoom: 10.4, pitch: 38, bearing: -8 } },
+        { id: 'chapter-london', location: { center: [-0.1278, 51.5074], zoom: 10.5, pitch: 32, bearing: -20 } },
+        { id: 'chapter-bangalore', location: { center: [77.5946, 12.9716], zoom: 10.0, pitch: 26, bearing: 5 } },
+      ],
+    };
+
+    if (!config.accessToken || config.accessToken.includes('YOUR_')) {
+      warningElement.classList.remove('unloaded');
+      mapElement.classList.add('journey-story__map--disabled');
+      return;
+    }
+
+    mapboxgl.accessToken = config.accessToken;
+
+    const getTheme = () => {
+      const explicitTheme = document.documentElement.getAttribute('data-theme');
+      if (explicitTheme === 'dark' || explicitTheme === 'light') return explicitTheme;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+
+    const getStyleForTheme = () => (getTheme() === 'dark' ? config.styles.night : config.styles.day);
+
+    let currentAppliedStyle = getStyleForTheme();
+
+    const map = new mapboxgl.Map({
+      container: 'journey-map',
+      style: currentAppliedStyle,
+      center: config.chapters[0].location.center,
+      zoom: config.chapters[0].location.zoom,
+      pitch: config.chapters[0].location.pitch,
+      bearing: config.chapters[0].location.bearing,
+      projection: 'globe',
+      antialias: true,
+    });
+
+    map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+    map.scrollZoom.disable();
+
+    const places = [
+      { label: 'Stanford', period: '2022 - Present', coords: [-122.1697, 37.4275] },
+      { label: 'Cambridge', period: '2020 - 2022', coords: [-71.0942, 42.3601] },
+      { label: 'Abu Dhabi', period: '2018 - 2020', coords: [54.3773, 24.4539] },
+      { label: 'Sharjah', period: '2015 - 2018', coords: [55.4209, 25.3463] },
+      { label: 'Berne', period: '2011 - 2014', coords: [7.4474, 46.9480] },
+      { label: 'New Delhi', period: '2008 - 2011', coords: [77.2090, 28.6139] },
+      { label: 'Thimphu', period: '2005 - 2008', coords: [89.6390, 27.4728] },
+      { label: 'London', period: '2001 - 2005', coords: [-0.1278, 51.5074] },
+      { label: 'Bangalore', period: '1998 - 2000', coords: [77.5946, 12.9716] },
+    ];
+
+    const renderPlacesLayers = () => {
+      if (!map.getSource('journey-places')) {
+        map.addSource('journey-places', {
+          type: 'geojson',
+          data: {
+            type: 'FeatureCollection',
+            features: places.map((item) => ({
+              type: 'Feature',
+              properties: { label: item.label, period: item.period },
+              geometry: { type: 'Point', coordinates: item.coords },
+            })),
+          },
+        });
+      }
+
+      if (!map.getLayer('journey-places-circle')) {
+        map.addLayer({
+          id: 'journey-places-circle',
+          type: 'circle',
+          source: 'journey-places',
+          paint: {
+            'circle-radius': 6,
+            'circle-color': '#2f6fed',
+            'circle-stroke-width': 2,
+            'circle-stroke-color': '#ffffff',
+          },
+        });
+      }
+
+      if (!map.getLayer('journey-places-label')) {
+        map.addLayer({
+          id: 'journey-places-label',
+          type: 'symbol',
+          source: 'journey-places',
+          layout: {
+            'text-field': ['format', ['get', 'label'], { 'font-scale': 1.0 }, '\n', {}, ['get', 'period'], { 'font-scale': 0.85 }],
+            'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+            'text-size': 13,
+            'text-offset': [0, 1.25],
+            'text-anchor': 'top',
+            'text-allow-overlap': false,
+          },
+          paint: {
+            'text-color': '#1e293b',
+            'text-halo-color': '#ffffff',
+            'text-halo-width': 1.5,
+            'text-halo-blur': 0.5,
+          },
+        });
+      }
+    };
+
+    map.on('load', renderPlacesLayers);
+    map.on('style.load', renderPlacesLayers);
+
+    const applyThemeStyle = () => {
+      const targetStyle = getStyleForTheme();
+      if (targetStyle === currentAppliedStyle) return;
+      currentAppliedStyle = targetStyle;
+      map.setStyle(targetStyle);
+    };
+
+    const themeObserver = new MutationObserver(() => applyThemeStyle());
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme', 'data-theme-setting'],
+    });
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => applyThemeStyle());
+
+    let activeChapterId = config.chapters[0].id;
+    let ticking = false;
+
+    const updateOverlay = (node) => {
+      if (!node) return;
+
+      if (overlayPeriod) overlayPeriod.textContent = node.dataset.period || '';
+      if (overlayTitle) overlayTitle.textContent = node.dataset.title || '';
+      if (overlayDescription) overlayDescription.textContent = node.dataset.description || '';
+
+      if (overlayMedia && overlayImage) {
+        const imageSrc = node.dataset.image || '';
+        const imageAlt = node.dataset.imageAlt || node.dataset.title || 'Journey location image';
+
+        if (imageSrc) {
+          overlayImage.src = imageSrc;
+          overlayImage.alt = imageAlt;
+          overlayMedia.classList.remove('journey-story__overlay-media--hidden');
+          overlayMedia.setAttribute('aria-hidden', 'false');
+        } else {
+          overlayImage.removeAttribute('src');
+          overlayImage.alt = '';
+          overlayMedia.classList.add('journey-story__overlay-media--hidden');
+          overlayMedia.setAttribute('aria-hidden', 'true');
+        }
+      }
+    };
+
+    const getCameraPadding = () => {
+      const basePadding = { top: 24, right: 24, bottom: 24, left: 24 };
+      if (!overlayCard || !mapElement) return basePadding;
+
+      const overlayRect = overlayCard.getBoundingClientRect();
+      const mapRect = mapElement.getBoundingClientRect();
+
+      const overlayWidth = Math.max(0, Math.min(overlayRect.width, mapRect.width));
+      const overlayHeight = Math.max(0, Math.min(overlayRect.height, mapRect.height));
+      const isMobile = window.matchMedia('(max-width: 992px)').matches;
+
+      if (isMobile) {
+        return {
+          top: Math.round(overlayHeight + 34),
+          right: 20,
+          bottom: 20,
+          left: 20,
+        };
+      }
+
+      return {
+        top: Math.max(24, Math.round(overlayHeight * 0.35)),
+        right: 30,
+        bottom: 30,
+        left: Math.round(overlayWidth + 38),
+      };
+    };
+
+    const setActiveChapter = (chapterId, force = false) => {
+      if (!force && chapterId === activeChapterId) return;
+
+      const chapter = config.chapters.find((item) => item.id === chapterId);
+      if (!chapter) return;
+
+      map.stop();
+      map.flyTo({
+        ...chapter.location,
+        padding: getCameraPadding(),
+        speed: 0.45,
+        curve: 1.3,
+        essential: true,
+      });
+
+      document.querySelectorAll('.journey-story__trigger').forEach((node) => {
+        node.classList.toggle('is-active', node.id === chapterId);
+      });
+
+      const activeNode = document.getElementById(chapterId);
+      updateOverlay(activeNode);
+
+      activeChapterId = chapterId;
+    };
+
+    const chapterNodes = config.chapters.map((chapter) => document.getElementById(chapter.id)).filter((node) => node);
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+
+      window.requestAnimationFrame(() => {
+        let topChapter = null;
+        let minDistance = Number.POSITIVE_INFINITY;
+
+        chapterNodes.forEach((node) => {
+          const rect = node.getBoundingClientRect();
+          const distance = Math.abs(rect.top - window.innerHeight * 0.35);
+          if (distance < minDistance) {
+            minDistance = distance;
+            topChapter = node;
+          }
+        });
+
+        if (topChapter) setActiveChapter(topChapter.id);
+        ticking = false;
+      });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', () => map.resize());
+    updateOverlay(document.getElementById(activeChapterId));
+
+    map.on('load', () => {
+      setActiveChapter(activeChapterId, true);
+    });
+
+    setTimeout(() => map.resize(), 120);
+  });
+</script>

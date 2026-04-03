@@ -18,6 +18,6 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-I'm an energy enthusiast based out of Stanford! 
+I'm an energy enthusiast based out of Stanford!
 I work on state estimation, experimental design, and parameter estimation in the context of battery modelling.
 Super interested in anything energy transition-related.
