@@ -1,0 +1,42 @@
+{
+  "graphs": [
+    {
+      "slug": "week3-gemma-dallas",
+      "scan": "mntss/gemma-scope-transcoders",
+      "transcoder_list": [],
+      "prompt_tokens": [
+        "<bos>",
+        "The",
+        " capital",
+        " of",
+        " the",
+        " state",
+        " containing",
+        " Dallas",
+        " is"
+      ],
+      "prompt": "<bos>The capital of the state containing Dallas is",
+      "node_threshold": 0.8,
+      "schema_version": 1
+    },
+    {
+      "slug": "week3-gemma-houston",
+      "scan": "mntss/gemma-scope-transcoders",
+      "transcoder_list": [],
+      "prompt_tokens": [
+        "<bos>",
+        "The",
+        " capital",
+        " of",
+        " the",
+        " state",
+        " containing",
+        " Houston",
+        " is"
+      ],
+      "prompt": "<bos>The capital of the state containing Houston is",
+      "node_threshold": 0.8,
+      "schema_version": 1
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "graphs": [
+    {
+      "slug": "week4-gemma-homonym-bank-finance",
+      "scan": "mntss/gemma-scope-transcoders",
+      "transcoder_list": [],
+      "prompt_tokens": [
+        "<bos>",
+        "She",
+        " deposited",
+        " her",
+        " paycheck",
+        " at",
+        " the"
+      ],
+      "prompt": "<bos>She deposited her paycheck at the",
+      "node_threshold": 0.8,
+      "schema_version": 1
+    },
+    {
+      "slug": "week4-gemma-homonym-bank-river",
+      "scan": "mntss/gemma-scope-transcoders",
+      "transcoder_list": [],
+      "prompt_tokens": [
+        "<bos>",
+        "They",
+        " sat",
+        " on",
+        " the",
+        " grassy",
+        " river"
+      ],
+      "prompt": "<bos>They sat on the grassy river",
+      "node_threshold": 0.8,
+      "schema_version": 1
+    }
+  ]
+}
