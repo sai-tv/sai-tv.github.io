@@ -57,6 +57,9 @@ on:
       - "!README.md"
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 permissions:
   contents: write
 
@@ -75,20 +78,36 @@ jobs:
       - name: Setup Python 🐍
         uses: actions/setup-python@v5
         with:
-          python-version: "3.13"
+          python-version: "3.11"
           cache: "pip" # caching pip dependencies
       - name: Update _config.yml ⚙️
-        uses: fjogeleit/yaml-update-action@main
-        with:
-          commitChange: false
-          valueFile: "_config.yml"
-          propertyPath: "giscus.repo"
-          value: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import re
+          from pathlib import Path
+
+          config_path = Path("_config.yml")
+          content = config_path.read_text(encoding="utf-8")
+          repo_name = os.environ["GITHUB_REPOSITORY"]
+
+          updated = re.sub(
+              r'^(\s*repo:\s*).*$',
+              rf'\1{repo_name} # your repo name',
+              content,
+              flags=re.MULTILINE,
+          )
+
+          if updated == content:
+              raise SystemExit("Could not find giscus repo line in _config.yml")
+
+          config_path.write_text(updated, encoding="utf-8")
+          PY
       - name: Install and Build 🔧
         run: |
           pip3 install --upgrade nbconvert
           export JEKYLL_ENV=production
-          bundle exec jekyll build
+          bundle exec jekyll build --trace
       - name: Purge unused CSS 🧹
         run: |
           npm install -g purgecss
