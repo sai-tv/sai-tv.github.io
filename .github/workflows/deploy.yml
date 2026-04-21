@@ -82,27 +82,8 @@ jobs:
           cache: "pip" # caching pip dependencies
       - name: Update _config.yml ⚙️
         run: |
-          python3 - <<'PY'
-          import os
-          import re
-          from pathlib import Path
-
-          config_path = Path("_config.yml")
-          content = config_path.read_text(encoding="utf-8")
-          repo_name = os.environ["GITHUB_REPOSITORY"]
-
-          updated = re.sub(
-              r'^(\s*repo:\s*).*$',
-              rf'\1{repo_name} # your repo name',
-              content,
-              flags=re.MULTILINE,
-          )
-
-          if updated == content:
-              raise SystemExit("Could not find giscus repo line in _config.yml")
-
-          config_path.write_text(updated, encoding="utf-8")
-          PY
+          sed -E "s|^(\s*repo:\s*).*$|\1${GITHUB_REPOSITORY} # your repo name|" _config.yml > _config.yml.tmp
+          mv _config.yml.tmp _config.yml
       - name: Install and Build 🔧
         run: |
           pip3 install --upgrade nbconvert
