@@ -32,7 +32,7 @@ You need to add `CNAME` file to the `main` or `source` branch of your repository
 
 ### My webpage works locally. But after deploying, it fails to build and throws `Unknown tag 'toc'`. How do I fix that?
 
-Make sure you followed through the [deployment instructions](#deployment) in the previous section. You should have set the deployment branch to `gh-pages`. (Related issue: [1438](https://github.com/alshedivat/al-folio/issues/1438).)
+Make sure you followed through the [deployment instructions](#deployment) in the previous section. You should have set the GitHub Pages source to `GitHub Actions`. (Related issue: [1438](https://github.com/alshedivat/al-folio/issues/1438).)
 
 ---
 
